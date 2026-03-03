@@ -17,6 +17,7 @@ function App() {
     cantidad_item_por_dimensiones: "5,5,5",
     numero_maximo_de_escala: "5",
   });
+  const apiUrl = import.meta.env.VITE_API_URL
 
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -67,7 +68,7 @@ function App() {
       formData.append("config", JSON.stringify(payload));
 
       const response = await axios.post(
-        "http://localhost:8000/procesar",
+        `${apiUrl}/procesar`,
         formData,
         { responseType: "blob" }
       );
